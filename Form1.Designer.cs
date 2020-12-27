@@ -41,9 +41,9 @@ namespace AngularGUI
             this.errmessage = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.resizeButton = new System.Windows.Forms.Button();
+            this.closeButton = new System.Windows.Forms.Button();
+            this.minimizeButton = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.projectDriveLabel = new System.Windows.Forms.Label();
@@ -55,12 +55,23 @@ namespace AngularGUI
             this.panel3 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.errMsgFlag = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.createNewFlagTextBox = new System.Windows.Forms.TextBox();
+            this.npmAuditFixButton = new System.Windows.Forms.Button();
+            this.npmInstallButton = new System.Windows.Forms.Button();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.outPut = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.panel7.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -79,11 +90,12 @@ namespace AngularGUI
             // openedProjectTextBox
             // 
             this.openedProjectTextBox.Font = new System.Drawing.Font("Microsoft JhengHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.openedProjectTextBox.Location = new System.Drawing.Point(8, 257);
+            this.openedProjectTextBox.Location = new System.Drawing.Point(8, 264);
             this.openedProjectTextBox.Name = "openedProjectTextBox";
             this.openedProjectTextBox.Size = new System.Drawing.Size(184, 21);
             this.openedProjectTextBox.TabIndex = 1;
             this.openedProjectTextBox.DoubleClick += new System.EventHandler(this.openedProjectTextBox_Click);
+            this.openedProjectTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.openedProjectTextBox_KeyDown);
             // 
             // openFolderButton
             // 
@@ -104,17 +116,16 @@ namespace AngularGUI
             // 
             // createNewTextBox
             // 
-            this.createNewTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.createNewTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.createNewTextBox.Font = new System.Drawing.Font("Microsoft JhengHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.createNewTextBox.Location = new System.Drawing.Point(6, 454);
+            this.createNewTextBox.Location = new System.Drawing.Point(6, 397);
             this.createNewTextBox.Name = "createNewTextBox";
             this.createNewTextBox.Size = new System.Drawing.Size(400, 21);
             this.createNewTextBox.TabIndex = 4;
             // 
             // createComponentButton
             // 
+            this.createComponentButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.createComponentButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.createComponentButton.Font = new System.Drawing.Font("Microsoft JhengHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.createComponentButton.ForeColor = System.Drawing.SystemColors.ControlLight;
@@ -128,6 +139,7 @@ namespace AngularGUI
             // 
             // createServiceButton
             // 
+            this.createServiceButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.createServiceButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.createServiceButton.Font = new System.Drawing.Font("Microsoft JhengHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.createServiceButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
@@ -141,6 +153,7 @@ namespace AngularGUI
             // 
             // createModuleButton
             // 
+            this.createModuleButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.createModuleButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.createModuleButton.Font = new System.Drawing.Font("Microsoft JhengHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.createModuleButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
@@ -154,10 +167,11 @@ namespace AngularGUI
             // 
             // errmessage
             // 
+            this.errmessage.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.errmessage.AutoSize = true;
             this.errmessage.Font = new System.Drawing.Font("Microsoft JhengHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.errmessage.ForeColor = System.Drawing.Color.Red;
-            this.errmessage.Location = new System.Drawing.Point(121, 421);
+            this.errmessage.Location = new System.Drawing.Point(111, 380);
             this.errmessage.Name = "errmessage";
             this.errmessage.Size = new System.Drawing.Size(0, 14);
             this.errmessage.TabIndex = 6;
@@ -172,58 +186,62 @@ namespace AngularGUI
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(611, 40);
             this.panel1.TabIndex = 7;
+            this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
             // 
             // panel6
             // 
-            this.panel6.Controls.Add(this.button2);
-            this.panel6.Controls.Add(this.button3);
-            this.panel6.Controls.Add(this.button1);
+            this.panel6.Controls.Add(this.resizeButton);
+            this.panel6.Controls.Add(this.closeButton);
+            this.panel6.Controls.Add(this.minimizeButton);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel6.Location = new System.Drawing.Point(473, 0);
+            this.panel6.Location = new System.Drawing.Point(492, 0);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(138, 40);
+            this.panel6.Size = new System.Drawing.Size(119, 40);
             this.panel6.TabIndex = 2;
             // 
-            // button2
+            // resizeButton
             // 
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(0)))), ((int)(((byte)(49)))));
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.Location = new System.Drawing.Point(57, 6);
-            this.button2.Name = "button2";
-            this.button2.Padding = new System.Windows.Forms.Padding(3);
-            this.button2.Size = new System.Drawing.Size(28, 28);
-            this.button2.TabIndex = 1;
-            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.button2.UseVisualStyleBackColor = true;
+            this.resizeButton.FlatAppearance.BorderSize = 0;
+            this.resizeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.resizeButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(0)))), ((int)(((byte)(49)))));
+            this.resizeButton.Image = ((System.Drawing.Image)(resources.GetObject("resizeButton.Image")));
+            this.resizeButton.Location = new System.Drawing.Point(45, 6);
+            this.resizeButton.Name = "resizeButton";
+            this.resizeButton.Padding = new System.Windows.Forms.Padding(3);
+            this.resizeButton.Size = new System.Drawing.Size(28, 28);
+            this.resizeButton.TabIndex = 1;
+            this.resizeButton.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.resizeButton.UseVisualStyleBackColor = true;
+            this.resizeButton.Click += new System.EventHandler(this.resizeButton_Click);
             // 
-            // button3
+            // closeButton
             // 
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(0)))), ((int)(((byte)(49)))));
-            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            this.button3.Location = new System.Drawing.Point(95, 6);
-            this.button3.Name = "button3";
-            this.button3.Padding = new System.Windows.Forms.Padding(3);
-            this.button3.Size = new System.Drawing.Size(28, 28);
-            this.button3.TabIndex = 1;
-            this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.button3.UseVisualStyleBackColor = true;
+            this.closeButton.FlatAppearance.BorderSize = 0;
+            this.closeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.closeButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(0)))), ((int)(((byte)(49)))));
+            this.closeButton.Image = ((System.Drawing.Image)(resources.GetObject("closeButton.Image")));
+            this.closeButton.Location = new System.Drawing.Point(83, 6);
+            this.closeButton.Name = "closeButton";
+            this.closeButton.Padding = new System.Windows.Forms.Padding(3);
+            this.closeButton.Size = new System.Drawing.Size(28, 28);
+            this.closeButton.TabIndex = 1;
+            this.closeButton.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.closeButton.UseVisualStyleBackColor = true;
+            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
             // 
-            // button1
+            // minimizeButton
             // 
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(0)))), ((int)(((byte)(49)))));
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(19, 6);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(28, 28);
-            this.button1.TabIndex = 1;
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.button1.UseVisualStyleBackColor = true;
+            this.minimizeButton.FlatAppearance.BorderSize = 0;
+            this.minimizeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.minimizeButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(0)))), ((int)(((byte)(49)))));
+            this.minimizeButton.Image = ((System.Drawing.Image)(resources.GetObject("minimizeButton.Image")));
+            this.minimizeButton.Location = new System.Drawing.Point(7, 6);
+            this.minimizeButton.Name = "minimizeButton";
+            this.minimizeButton.Size = new System.Drawing.Size(28, 28);
+            this.minimizeButton.TabIndex = 1;
+            this.minimizeButton.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.minimizeButton.UseVisualStyleBackColor = true;
+            this.minimizeButton.Click += new System.EventHandler(this.minimizeButton_Click);
             // 
             // label6
             // 
@@ -339,9 +357,16 @@ namespace AngularGUI
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(0)))), ((int)(((byte)(35)))));
+            this.panel4.Controls.Add(this.panel7);
+            this.panel4.Controls.Add(this.label4);
+            this.panel4.Controls.Add(this.label3);
+            this.panel4.Controls.Add(this.errMsgFlag);
             this.panel4.Controls.Add(this.errmessage);
             this.panel4.Controls.Add(this.panel5);
+            this.panel4.Controls.Add(this.createNewFlagTextBox);
             this.panel4.Controls.Add(this.createNewTextBox);
+            this.panel4.Controls.Add(this.npmAuditFixButton);
+            this.panel4.Controls.Add(this.npmInstallButton);
             this.panel4.Controls.Add(this.createComponentButton);
             this.panel4.Controls.Add(this.createServiceButton);
             this.panel4.Controls.Add(this.createModuleButton);
@@ -351,15 +376,115 @@ namespace AngularGUI
             this.panel4.Size = new System.Drawing.Size(411, 572);
             this.panel4.TabIndex = 9;
             // 
+            // label4
+            // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Orbitron", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(22)))), ((int)(((byte)(88)))));
+            this.label4.Location = new System.Drawing.Point(6, 431);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(97, 14);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "Option or Flag:";
+            // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Orbitron", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(22)))), ((int)(((byte)(88)))));
+            this.label3.Location = new System.Drawing.Point(6, 380);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(45, 14);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Name:";
+            // 
+            // errMsgFlag
+            // 
+            this.errMsgFlag.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.errMsgFlag.AutoSize = true;
+            this.errMsgFlag.Font = new System.Drawing.Font("Microsoft JhengHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.errMsgFlag.ForeColor = System.Drawing.Color.Red;
+            this.errMsgFlag.Location = new System.Drawing.Point(156, 431);
+            this.errMsgFlag.Name = "errMsgFlag";
+            this.errMsgFlag.Size = new System.Drawing.Size(0, 14);
+            this.errMsgFlag.TabIndex = 6;
+            // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(12)))), ((int)(((byte)(31)))));
+            this.panel5.Controls.Add(this.outPut);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel5.ForeColor = System.Drawing.Color.White;
             this.panel5.Location = new System.Drawing.Point(0, 542);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(411, 30);
             this.panel5.TabIndex = 6;
+            // 
+            // createNewFlagTextBox
+            // 
+            this.createNewFlagTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.createNewFlagTextBox.Font = new System.Drawing.Font("Microsoft JhengHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.createNewFlagTextBox.Location = new System.Drawing.Point(6, 448);
+            this.createNewFlagTextBox.Name = "createNewFlagTextBox";
+            this.createNewFlagTextBox.Size = new System.Drawing.Size(400, 21);
+            this.createNewFlagTextBox.TabIndex = 4;
+            // 
+            // npmAuditFixButton
+            // 
+            this.npmAuditFixButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.npmAuditFixButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.npmAuditFixButton.Font = new System.Drawing.Font("Microsoft JhengHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.npmAuditFixButton.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.npmAuditFixButton.Location = new System.Drawing.Point(207, 313);
+            this.npmAuditFixButton.Name = "npmAuditFixButton";
+            this.npmAuditFixButton.Size = new System.Drawing.Size(120, 30);
+            this.npmAuditFixButton.TabIndex = 5;
+            this.npmAuditFixButton.Text = "Audit and Fix";
+            this.npmAuditFixButton.UseVisualStyleBackColor = true;
+            this.npmAuditFixButton.Click += new System.EventHandler(this.npmAuditFixButton_Click);
+            // 
+            // npmInstallButton
+            // 
+            this.npmInstallButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.npmInstallButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.npmInstallButton.Font = new System.Drawing.Font("Microsoft JhengHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.npmInstallButton.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.npmInstallButton.Location = new System.Drawing.Point(70, 313);
+            this.npmInstallButton.Name = "npmInstallButton";
+            this.npmInstallButton.Size = new System.Drawing.Size(120, 30);
+            this.npmInstallButton.TabIndex = 5;
+            this.npmInstallButton.Text = "npm Install";
+            this.npmInstallButton.UseVisualStyleBackColor = true;
+            this.npmInstallButton.Click += new System.EventHandler(this.npminstallButton_Click);
+            // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.progressBar);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel7.Location = new System.Drawing.Point(0, 0);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(411, 24);
+            this.panel7.TabIndex = 7;
+            // 
+            // progressBar
+            // 
+            this.progressBar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.progressBar.Location = new System.Drawing.Point(0, 1);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(411, 14);
+            this.progressBar.TabIndex = 0;
+            // 
+            // outPut
+            // 
+            this.outPut.AutoSize = true;
+            this.outPut.Location = new System.Drawing.Point(33, 9);
+            this.outPut.Name = "outPut";
+            this.outPut.Size = new System.Drawing.Size(0, 13);
+            this.outPut.TabIndex = 0;
             // 
             // Form1
             // 
@@ -382,6 +507,9 @@ namespace AngularGUI
             this.panel3.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            this.panel7.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -410,10 +538,19 @@ namespace AngularGUI
         private System.Windows.Forms.Label projectLocationLabel;
         private System.Windows.Forms.Label projectNameLabel;
         private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button resizeButton;
+        private System.Windows.Forms.Button closeButton;
+        private System.Windows.Forms.Button minimizeButton;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox createNewFlagTextBox;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label errMsgFlag;
+        private System.Windows.Forms.Button npmAuditFixButton;
+        private System.Windows.Forms.Button npmInstallButton;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.ProgressBar progressBar;
+        private System.Windows.Forms.Label outPut;
     }
 }
 
