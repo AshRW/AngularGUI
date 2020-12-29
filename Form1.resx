@@ -120,10 +120,10 @@
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="openFolderButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAABzSURBVEhLYxgFgwf8///fBoj3AzEukA9VSh4AGnAZYg5eQL4lUAOoATYDsQ7UWASAyFENbIYa
-        iwBQif9QLtkAagymOVDxUQtGLSAMoMaMWoAbQI3BasF9iBRVwGGosQgAFPQHYmpYAiqVbaDGjoIBBwwM
-        ACcjJB40TezLAAAAAElFTkSuQmCC
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAHNJREFUSEtj
+        GAWDB/z//98GiPcDMS6QD1VKHgAacBliDl5AviVQA6gBNgOxDtRYBIDIUQ1shhqLAFCJ/1Au2QBqDKY5
+        UPFRC0YtIAygxoxagBtAjcFqwX2IFFXAYaixCAAU9AdialgCKpVtoMaOggEHDAwAJyMkHjRN7MsAAAAA
+        SUVORK5CYII=
 </value>
   </data>
   <metadata name="openFolderDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">

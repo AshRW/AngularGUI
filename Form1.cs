@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -14,8 +15,10 @@ namespace AngularGUI
 {
     public partial class Form1 : Form
     {
-        string path = null, folderName = null, drive = null;
-        string[] collection;
+        string path = null, folderName = null, drive = null, processID, netStatOutput;
+        string[] collection, collection2;
+        bool status = false;
+        int portNumber = 4200;
         public Form1()
         {
             InitializeComponent();
@@ -233,15 +236,116 @@ namespace AngularGUI
             }
         }
 
+        private void ngServeButton_Click(object sender, EventArgs e)
+        {
+            string arg = "--o";
+            if (path != null)
+            {
+                if (!status)
+                {
+                    ngServeButton.Enabled = false;
+                    if (!browserOpen.Checked)
+                    {
+                        arg = null;
+                    }
+                    var proc1 = new Process
+                    {
+                        StartInfo = new ProcessStartInfo
+                        {
+                            FileName = "cmd.exe",
+                            UseShellExecute = false, 
+                            RedirectStandardOutput = true, 
+                            RedirectStandardError = true, 
+                            Arguments = @"/c ng s " + arg,
+                            CreateNoWindow = true,
+                            WorkingDirectory = @path
+                        }
+                    };
+                    proc1.Start();
+                    status = true;
+                    ngServeButton.Text = "Stop Project";
+                    ngServeButton.Enabled = true;
+                }
+                else
+                {
+                    ngServeButton.Enabled = false;
+                    var proc2 = new Process
+                    {
+                        StartInfo = new ProcessStartInfo
+                        {
+                            FileName = "cmd.exe",
+                            UseShellExecute = false,
+                            RedirectStandardOutput = true,
+                            RedirectStandardError = true,
+                            Arguments = @"/c netstat -ano | findstr :" + portNumber,
+                            CreateNoWindow = true,
+                        }
+                    };
+                    proc2.Start();
+                    netStatOutput = proc2.StandardOutput.ReadLine();
+                    collection2 = Regex.Split(netStatOutput, @"\s+");
+                    processID = collection2[collection2.Length - 1];
+                    var stopAngular = new Process
+                    {
+                        StartInfo = new ProcessStartInfo
+                        {
+                            FileName = "cmd.exe",
+                            UseShellExecute = false,
+                            RedirectStandardOutput = true,
+                            RedirectStandardError = true,
+                            Arguments = @"/c taskkill /PID " + processID + " /F",
+                            CreateNoWindow = true,
+                        }
+                    };
+                    stopAngular.Start();
+                    status = false;
+                    outPut.Text = stopAngular.StandardOutput.ReadLine();
+                    ngServeButton.Text = "Serve Project";
+                    ngServeButton.Enabled = true;
+
+                }
+            }
+            else
+                errmessage.Text = "Please Open Project First";
+        }
+
         private void npminstallButton_Click(object sender, EventArgs e)
         {
-            var proc = new Process { StartInfo = new ProcessStartInfo { FileName = "cmd.exe"/*, UseShellExecute = false*/ /*, RedirectStandardOutput = true*/, Arguments = @"/k npm i"/*, RedirectStandardError = true*/, CreateNoWindow = false, WorkingDirectory = @path } };
-            proc.Start();
+            if (path != null)
+            {
+                errmessage.Text = null;
+                var proc = new Process
+                {
+                    StartInfo = new ProcessStartInfo
+                    {
+                        FileName = "cmd.exe",
+                        Arguments = @"/k npm i",
+                        WorkingDirectory = @path
+                    }
+                };
+                proc.Start();
+            }
+            else
+                errmessage.Text = "Please Open Project First";
         }
         private void npmAuditFixButton_Click(object sender, EventArgs e)
         {
-            var proc = new Process { StartInfo = new ProcessStartInfo { FileName = "cmd.exe"/*, UseShellExecute = false*/ /*, RedirectStandardOutput = true*/, Arguments = @"/k npm audit fix"/*, RedirectStandardError = true*/, CreateNoWindow = false, WorkingDirectory = @path } };
-            proc.Start();
+            if (path != null)
+            {
+                errmessage.Text = null;
+                var proc = new Process
+                {
+                    StartInfo = new ProcessStartInfo
+                    {
+                        FileName = "cmd.exe",
+                        Arguments = @"/k npm audit fix",
+                        WorkingDirectory = @path
+                    }
+                };
+                proc.Start();
+            }
+            else
+                errmessage.Text = "Please Open Project First";
         }
     }
 }
