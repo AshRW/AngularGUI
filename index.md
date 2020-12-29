@@ -55,7 +55,7 @@ I am Anurag, a bachelor of engineering - computer science graduate. I love to ex
 
 ## See more of my Projects
 I have **more projects listed and hosted on this website**:\
-**[My Projects - Anurag RW]**(https://hosted-project-list.web.app/)
+[My Projects - Anurag RW](https://hosted-project-list.web.app/)
 
 ### Note
 I am aware that the application is not optimal and my way of achieving a functionality might not be fool-proof and also that it may be extremely naïve. It doesn't yet make a complete GUI suit for a command line process but its just a start. I'll add more functionality and sophistication to the application as I go on learning C#, the .NET Framework, and the Windows Form Application.
