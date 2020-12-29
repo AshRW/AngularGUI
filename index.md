@@ -4,6 +4,10 @@
 This Windows Forms Application is build using _C#_ and _.NET Framework_ in _Visual Studio_.\
 This Application is a Graphical User Interface for the Angular CLI.
 
+## Download Latest Released Version
+Download the latest released verion here:
+https://github.com/AshRW/AngularGUI/releases/download/0.1/AngularGUI.v0.1.exe
+
 ## How it Works
 
 The Application uses `System.Diagnostics` to communicate with the cmd / command line interface.\
