@@ -43,7 +43,7 @@ private void npmAuditFixButton_Click(object sender, EventArgs e)
 
 ## Project Videos
 **Watch Project Video (Full HD):**
-https://youtu.be/yd1dWbCStYw
+[Project Video - YouTube Link](https://youtu.be/yd1dWbCStYw)
 
 ## Features
 * Validated Inputs
