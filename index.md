@@ -6,7 +6,7 @@ This Application is a Graphical User Interface for the Angular CLI.
 
 ## Download Latest Released Version
 Download the latest released verion here:
-https://github.com/AshRW/AngularGUI/releases/download/0.1/AngularGUI.v0.1.exe
+[Angular GUI](https://github.com/AshRW/AngularGUI/releases/download/0.1/AngularGUI.v0.1.exe)
 
 ## How it Works
 
