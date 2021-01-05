@@ -30,7 +30,6 @@ namespace AngularGUI
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.label1 = new System.Windows.Forms.Label();
             this.openedProjectTextBox = new System.Windows.Forms.TextBox();
             this.openFolderButton = new System.Windows.Forms.Button();
             this.openFolderDialog = new System.Windows.Forms.FolderBrowserDialog();
@@ -55,7 +54,7 @@ namespace AngularGUI
             this.panel3 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
+            this.portNumberDisplay = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.portNumberInput = new System.Windows.Forms.TextBox();
             this.browserOpen = new System.Windows.Forms.CheckBox();
@@ -70,6 +69,9 @@ namespace AngularGUI
             this.createNewFlagTextBox = new System.Windows.Forms.TextBox();
             this.npmAuditFixButton = new System.Windows.Forms.Button();
             this.npmInstallButton = new System.Windows.Forms.Button();
+            this.folderLocation = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.setPortNumber = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -77,24 +79,15 @@ namespace AngularGUI
             this.panel4.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label1.AutoSize = true;
-            this.label1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.label1.Font = new System.Drawing.Font("moderna", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(22)))), ((int)(((byte)(88)))));
-            this.label1.Location = new System.Drawing.Point(16, 31);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(168, 39);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Angular GUI";
             // 
             // openedProjectTextBox
             // 
+            this.openedProjectTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
+            this.openedProjectTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.openedProjectTextBox.Font = new System.Drawing.Font("Microsoft JhengHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.openedProjectTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(173)))), ((int)(((byte)(181)))));
             this.openedProjectTextBox.Location = new System.Drawing.Point(8, 264);
             this.openedProjectTextBox.Name = "openedProjectTextBox";
             this.openedProjectTextBox.Size = new System.Drawing.Size(184, 21);
@@ -106,7 +99,7 @@ namespace AngularGUI
             // 
             this.openFolderButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.openFolderButton.Font = new System.Drawing.Font("Microsoft JhengHei", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.openFolderButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(22)))), ((int)(((byte)(88)))));
+            this.openFolderButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.openFolderButton.Image = ((System.Drawing.Image)(resources.GetObject("openFolderButton.Image")));
             this.openFolderButton.Location = new System.Drawing.Point(0, 168);
             this.openFolderButton.Name = "openFolderButton";
@@ -121,7 +114,10 @@ namespace AngularGUI
             // createNewTextBox
             // 
             this.createNewTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.createNewTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(62)))), ((int)(((byte)(70)))));
+            this.createNewTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.createNewTextBox.Font = new System.Drawing.Font("Microsoft JhengHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.createNewTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.createNewTextBox.Location = new System.Drawing.Point(13, 397);
             this.createNewTextBox.Name = "createNewTextBox";
             this.createNewTextBox.Size = new System.Drawing.Size(400, 21);
@@ -132,7 +128,7 @@ namespace AngularGUI
             this.createComponentButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.createComponentButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.createComponentButton.Font = new System.Drawing.Font("Microsoft JhengHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.createComponentButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.createComponentButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.createComponentButton.Location = new System.Drawing.Point(28, 494);
             this.createComponentButton.Name = "createComponentButton";
             this.createComponentButton.Size = new System.Drawing.Size(120, 30);
@@ -146,7 +142,7 @@ namespace AngularGUI
             this.createServiceButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.createServiceButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.createServiceButton.Font = new System.Drawing.Font("Microsoft JhengHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.createServiceButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.createServiceButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.createServiceButton.Location = new System.Drawing.Point(154, 494);
             this.createServiceButton.Name = "createServiceButton";
             this.createServiceButton.Size = new System.Drawing.Size(120, 30);
@@ -160,7 +156,7 @@ namespace AngularGUI
             this.createModuleButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.createModuleButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.createModuleButton.Font = new System.Drawing.Font("Microsoft JhengHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.createModuleButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.createModuleButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.createModuleButton.Location = new System.Drawing.Point(280, 494);
             this.createModuleButton.Name = "createModuleButton";
             this.createModuleButton.Size = new System.Drawing.Size(120, 30);
@@ -182,7 +178,7 @@ namespace AngularGUI
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(22)))), ((int)(((byte)(88)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(62)))), ((int)(((byte)(70)))));
             this.panel1.Controls.Add(this.panel6);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -251,7 +247,7 @@ namespace AngularGUI
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft JhengHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(12)))), ((int)(((byte)(31)))));
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(173)))), ((int)(((byte)(181)))));
             this.label6.Location = new System.Drawing.Point(10, 14);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(71, 14);
@@ -260,6 +256,8 @@ namespace AngularGUI
             // 
             // panel2
             // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(62)))), ((int)(((byte)(70)))));
+            this.panel2.Controls.Add(this.folderLocation);
             this.panel2.Controls.Add(this.projectDriveLabel);
             this.panel2.Controls.Add(this.projectLocationLabel);
             this.panel2.Controls.Add(this.projectNameLabel);
@@ -279,7 +277,7 @@ namespace AngularGUI
             // 
             this.projectDriveLabel.AutoSize = true;
             this.projectDriveLabel.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.projectDriveLabel.ForeColor = System.Drawing.Color.White;
+            this.projectDriveLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.projectDriveLabel.Location = new System.Drawing.Point(31, 523);
             this.projectDriveLabel.Name = "projectDriveLabel";
             this.projectDriveLabel.Size = new System.Drawing.Size(0, 17);
@@ -289,7 +287,7 @@ namespace AngularGUI
             // 
             this.projectLocationLabel.AutoSize = true;
             this.projectLocationLabel.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.projectLocationLabel.ForeColor = System.Drawing.Color.White;
+            this.projectLocationLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.projectLocationLabel.Location = new System.Drawing.Point(14, 418);
             this.projectLocationLabel.MaximumSize = new System.Drawing.Size(172, 60);
             this.projectLocationLabel.Name = "projectLocationLabel";
@@ -300,7 +298,7 @@ namespace AngularGUI
             // 
             this.projectNameLabel.AutoSize = true;
             this.projectNameLabel.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.projectNameLabel.ForeColor = System.Drawing.Color.White;
+            this.projectNameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.projectNameLabel.Location = new System.Drawing.Point(31, 335);
             this.projectNameLabel.Name = "projectNameLabel";
             this.projectNameLabel.Size = new System.Drawing.Size(0, 17);
@@ -310,7 +308,7 @@ namespace AngularGUI
             // 
             this.projectDriveHead.AutoSize = true;
             this.projectDriveHead.Font = new System.Drawing.Font("Microsoft JhengHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.projectDriveHead.ForeColor = System.Drawing.Color.White;
+            this.projectDriveHead.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.projectDriveHead.Location = new System.Drawing.Point(5, 503);
             this.projectDriveHead.Name = "projectDriveHead";
             this.projectDriveHead.Size = new System.Drawing.Size(0, 15);
@@ -320,7 +318,7 @@ namespace AngularGUI
             // 
             this.projectLocHead.AutoSize = true;
             this.projectLocHead.Font = new System.Drawing.Font("Microsoft JhengHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.projectLocHead.ForeColor = System.Drawing.Color.White;
+            this.projectLocHead.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.projectLocHead.Location = new System.Drawing.Point(5, 395);
             this.projectLocHead.Name = "projectLocHead";
             this.projectLocHead.Size = new System.Drawing.Size(0, 15);
@@ -330,7 +328,7 @@ namespace AngularGUI
             // 
             this.projectNameHead.AutoSize = true;
             this.projectNameHead.Font = new System.Drawing.Font("Microsoft JhengHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.projectNameHead.ForeColor = System.Drawing.Color.White;
+            this.projectNameHead.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.projectNameHead.Location = new System.Drawing.Point(5, 313);
             this.projectNameHead.Name = "projectNameHead";
             this.projectNameHead.Size = new System.Drawing.Size(0, 15);
@@ -338,9 +336,9 @@ namespace AngularGUI
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(12)))), ((int)(((byte)(31)))));
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
+            this.panel3.Controls.Add(this.pictureBox1);
             this.panel3.Controls.Add(this.label2);
-            this.panel3.Controls.Add(this.label1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
@@ -351,7 +349,7 @@ namespace AngularGUI
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft JhengHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(22)))), ((int)(((byte)(88)))));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(173)))), ((int)(((byte)(181)))));
             this.label2.Location = new System.Drawing.Point(72, 79);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(49, 14);
@@ -360,8 +358,9 @@ namespace AngularGUI
             // 
             // panel4
             // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(0)))), ((int)(((byte)(35)))));
-            this.panel4.Controls.Add(this.label7);
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
+            this.panel4.Controls.Add(this.setPortNumber);
+            this.panel4.Controls.Add(this.portNumberDisplay);
             this.panel4.Controls.Add(this.label5);
             this.panel4.Controls.Add(this.portNumberInput);
             this.panel4.Controls.Add(this.browserOpen);
@@ -385,24 +384,24 @@ namespace AngularGUI
             this.panel4.Size = new System.Drawing.Size(425, 572);
             this.panel4.TabIndex = 9;
             // 
-            // label7
+            // portNumberDisplay
             // 
-            this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft JhengHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(22)))), ((int)(((byte)(88)))));
-            this.label7.Location = new System.Drawing.Point(318, 107);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(75, 14);
-            this.label7.TabIndex = 11;
-            this.label7.Text = "Default: 4200";
+            this.portNumberDisplay.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.portNumberDisplay.AutoSize = true;
+            this.portNumberDisplay.Font = new System.Drawing.Font("Microsoft JhengHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.portNumberDisplay.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(173)))), ((int)(((byte)(181)))));
+            this.portNumberDisplay.Location = new System.Drawing.Point(320, 107);
+            this.portNumberDisplay.Name = "portNumberDisplay";
+            this.portNumberDisplay.Size = new System.Drawing.Size(75, 14);
+            this.portNumberDisplay.TabIndex = 11;
+            this.portNumberDisplay.Text = "Default: 4200";
             // 
             // label5
             // 
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft JhengHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(22)))), ((int)(((byte)(88)))));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(173)))), ((int)(((byte)(181)))));
             this.label5.Location = new System.Drawing.Point(209, 87);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(78, 14);
@@ -412,10 +411,13 @@ namespace AngularGUI
             // portNumberInput
             // 
             this.portNumberInput.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.portNumberInput.Enabled = false;
+            this.portNumberInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(62)))), ((int)(((byte)(70)))));
+            this.portNumberInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.portNumberInput.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.portNumberInput.Location = new System.Drawing.Point(212, 104);
+            this.portNumberInput.MaxLength = 5;
             this.portNumberInput.Name = "portNumberInput";
-            this.portNumberInput.Size = new System.Drawing.Size(100, 20);
+            this.portNumberInput.Size = new System.Drawing.Size(49, 20);
             this.portNumberInput.TabIndex = 10;
             // 
             // browserOpen
@@ -426,7 +428,7 @@ namespace AngularGUI
             this.browserOpen.CheckState = System.Windows.Forms.CheckState.Checked;
             this.browserOpen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.browserOpen.Font = new System.Drawing.Font("Microsoft JhengHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.browserOpen.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(22)))), ((int)(((byte)(88)))));
+            this.browserOpen.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.browserOpen.Location = new System.Drawing.Point(212, 48);
             this.browserOpen.Name = "browserOpen";
             this.browserOpen.Size = new System.Drawing.Size(97, 18);
@@ -439,7 +441,7 @@ namespace AngularGUI
             this.ngServeButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ngServeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ngServeButton.Font = new System.Drawing.Font("Microsoft JhengHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ngServeButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.ngServeButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.ngServeButton.Location = new System.Drawing.Point(51, 48);
             this.ngServeButton.Name = "ngServeButton";
             this.ngServeButton.Size = new System.Drawing.Size(112, 76);
@@ -471,11 +473,11 @@ namespace AngularGUI
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Orbitron", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(22)))), ((int)(((byte)(88)))));
+            this.label4.Font = new System.Drawing.Font("Microsoft JhengHei UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(173)))), ((int)(((byte)(181)))));
             this.label4.Location = new System.Drawing.Point(13, 431);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(97, 14);
+            this.label4.Size = new System.Drawing.Size(86, 14);
             this.label4.TabIndex = 1;
             this.label4.Text = "Option or Flag:";
             // 
@@ -483,11 +485,11 @@ namespace AngularGUI
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Orbitron", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(22)))), ((int)(((byte)(88)))));
+            this.label3.Font = new System.Drawing.Font("Microsoft JhengHei UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(173)))), ((int)(((byte)(181)))));
             this.label3.Location = new System.Drawing.Point(13, 380);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(45, 14);
+            this.label3.Size = new System.Drawing.Size(41, 14);
             this.label3.TabIndex = 1;
             this.label3.Text = "Name:";
             // 
@@ -504,7 +506,7 @@ namespace AngularGUI
             // 
             // panel5
             // 
-            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(12)))), ((int)(((byte)(31)))));
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(62)))), ((int)(((byte)(70)))));
             this.panel5.Controls.Add(this.outPut);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel5.ForeColor = System.Drawing.Color.White;
@@ -516,6 +518,7 @@ namespace AngularGUI
             // outPut
             // 
             this.outPut.AutoSize = true;
+            this.outPut.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.outPut.Location = new System.Drawing.Point(33, 9);
             this.outPut.Name = "outPut";
             this.outPut.Size = new System.Drawing.Size(0, 13);
@@ -524,7 +527,10 @@ namespace AngularGUI
             // createNewFlagTextBox
             // 
             this.createNewFlagTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.createNewFlagTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(62)))), ((int)(((byte)(70)))));
+            this.createNewFlagTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.createNewFlagTextBox.Font = new System.Drawing.Font("Microsoft JhengHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.createNewFlagTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.createNewFlagTextBox.Location = new System.Drawing.Point(13, 448);
             this.createNewFlagTextBox.Name = "createNewFlagTextBox";
             this.createNewFlagTextBox.Size = new System.Drawing.Size(400, 21);
@@ -535,7 +541,7 @@ namespace AngularGUI
             this.npmAuditFixButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.npmAuditFixButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.npmAuditFixButton.Font = new System.Drawing.Font("Microsoft JhengHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.npmAuditFixButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.npmAuditFixButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.npmAuditFixButton.Location = new System.Drawing.Point(214, 313);
             this.npmAuditFixButton.Name = "npmAuditFixButton";
             this.npmAuditFixButton.Size = new System.Drawing.Size(120, 30);
@@ -549,14 +555,49 @@ namespace AngularGUI
             this.npmInstallButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.npmInstallButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.npmInstallButton.Font = new System.Drawing.Font("Microsoft JhengHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.npmInstallButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.npmInstallButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.npmInstallButton.Location = new System.Drawing.Point(77, 313);
             this.npmInstallButton.Name = "npmInstallButton";
             this.npmInstallButton.Size = new System.Drawing.Size(120, 30);
             this.npmInstallButton.TabIndex = 5;
-            this.npmInstallButton.Text = "npm Install";
+            this.npmInstallButton.Text = "NPM Install";
             this.npmInstallButton.UseVisualStyleBackColor = true;
             this.npmInstallButton.Click += new System.EventHandler(this.npminstallButton_Click);
+            // 
+            // folderLocation
+            // 
+            this.folderLocation.AutoSize = true;
+            this.folderLocation.Font = new System.Drawing.Font("Microsoft JhengHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.folderLocation.ForeColor = System.Drawing.Color.Tomato;
+            this.folderLocation.Location = new System.Drawing.Point(12, 297);
+            this.folderLocation.Name = "folderLocation";
+            this.folderLocation.Size = new System.Drawing.Size(0, 14);
+            this.folderLocation.TabIndex = 1;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
+            this.pictureBox1.Location = new System.Drawing.Point(9, 23);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(182, 49);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
+            // 
+            // setPortNumber
+            // 
+            this.setPortNumber.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.setPortNumber.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.setPortNumber.Font = new System.Drawing.Font("Microsoft JhengHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.setPortNumber.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.setPortNumber.Location = new System.Drawing.Point(269, 104);
+            this.setPortNumber.Name = "setPortNumber";
+            this.setPortNumber.Size = new System.Drawing.Size(45, 21);
+            this.setPortNumber.TabIndex = 5;
+            this.setPortNumber.Text = "Set";
+            this.setPortNumber.UseVisualStyleBackColor = true;
+            this.setPortNumber.Click += new System.EventHandler(this.setPortNumber_Click);
             // 
             // Form1
             // 
@@ -566,8 +607,8 @@ namespace AngularGUI
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.ShowIcon = false;
             this.Text = "Angular GUI by Anurag";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
@@ -582,13 +623,12 @@ namespace AngularGUI
             this.panel7.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox openedProjectTextBox;
         private System.Windows.Forms.Button openFolderButton;
         private System.Windows.Forms.FolderBrowserDialog openFolderDialog;
@@ -623,11 +663,14 @@ namespace AngularGUI
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.Label outPut;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label portNumberDisplay;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox portNumberInput;
         private System.Windows.Forms.CheckBox browserOpen;
         private System.Windows.Forms.Button ngServeButton;
+        private System.Windows.Forms.Label folderLocation;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button setPortNumber;
     }
 }
 

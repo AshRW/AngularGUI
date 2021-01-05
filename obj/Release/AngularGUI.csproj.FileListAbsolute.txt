@@ -8,3 +8,8 @@ D:\War Station\Extra School\learn\c#\Angular GUI\AngularGUI\obj\Release\AngularG
 D:\War Station\Extra School\learn\c#\Angular GUI\AngularGUI\obj\Release\AngularGUI.csproj.CoreCompileInputs.cache
 D:\War Station\Extra School\learn\c#\Angular GUI\AngularGUI\obj\Release\AngularGUI.exe
 D:\War Station\Extra School\learn\c#\Angular GUI\AngularGUI\obj\Release\AngularGUI.pdb
+D:\War Station\Extra School\learn\c#\Angular GUI\AngularGUI\bin\Release\Eco.Handles.dll
+D:\War Station\Extra School\learn\c#\Angular GUI\AngularGUI\bin\Release\Eco.Interfaces.dll
+D:\War Station\Extra School\learn\c#\Angular GUI\AngularGUI\bin\Release\Eco.LinqExtender.dll
+D:\War Station\Extra School\learn\c#\Angular GUI\AngularGUI\bin\Release\System.Buffers.dll
+D:\War Station\Extra School\learn\c#\Angular GUI\AngularGUI\obj\Release\AngularGUI.csproj.CopyComplete
