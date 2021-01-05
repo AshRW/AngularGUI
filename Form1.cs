@@ -16,7 +16,7 @@ namespace AngularGUI
     public partial class Form1 : Form
     {
         string path = null, folderName = null, drive = null, processID, netStatOutput;
-        string[] collection, collection2;
+        string[] collection, collection2, collection3;
         bool status = false;
         int portNumber = 4200;
         public Form1()
@@ -262,12 +262,13 @@ namespace AngularGUI
                         }
                     };
                     proc1.Start();
-                    status = true;
+                    isServing();
                     ngServeButton.Text = "Stop Project";
                     ngServeButton.Enabled = true;
                 }
                 else
                 {
+                    progressBar.Value = 0;
                     ngServeButton.Enabled = false;
                     var proc2 = new Process
                     {
@@ -346,6 +347,70 @@ namespace AngularGUI
             }
             else
                 errmessage.Text = "Please Open Project First";
+        }
+        public void wait(int milliseconds)
+        {
+            var timer1 = new System.Windows.Forms.Timer();
+            if (milliseconds == 0 || milliseconds < 0) return;
+
+            // Console.WriteLine("start wait timer");
+            timer1.Interval = milliseconds;
+            timer1.Enabled = true;
+            timer1.Start();
+
+            timer1.Tick += (s, e) =>
+            {
+                timer1.Enabled = false;
+                timer1.Stop();
+                // Console.WriteLine("stop wait timer");
+            };
+
+            while (timer1.Enabled)
+            {
+                Application.DoEvents();
+            }
+        }
+        private void isServing()
+        {
+            string output = null;
+            int flag = 1;
+            progressBar.Value = 0;
+            do
+            {
+                if (progressBar.Value != 90)
+                    progressBar.Value += 10;
+                wait(3000);
+                var proc3 = new Process
+                {
+                    StartInfo = new ProcessStartInfo
+                    {
+                        FileName = "cmd.exe",
+                        UseShellExecute = false,
+                        RedirectStandardOutput = true,
+                        RedirectStandardError = true,
+                        Arguments = @"/c netstat -ano | findstr :" + portNumber,
+                        CreateNoWindow = true
+                    }
+                };
+                proc3.Start();
+                output = proc3.StandardOutput.ReadLine();
+                Console.WriteLine(output);
+                if (output != null)
+                {
+                    collection3 = Regex.Split(output, @"\s+");
+                    Console.WriteLine(collection3[4]);
+                    if (collection3[4] == "LISTENING")
+                    {
+                        flag = 0;
+                        status = true;
+                        progressBar.Value = 100;
+                        Console.WriteLine("Not Yet");
+                    }
+
+                }
+            } while (flag == 1);
+            if (flag == 0)
+                Console.WriteLine("Served");
         }
     }
 }

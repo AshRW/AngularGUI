@@ -55,6 +55,11 @@ namespace AngularGUI
             this.panel3 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.portNumberInput = new System.Windows.Forms.TextBox();
+            this.browserOpen = new System.Windows.Forms.CheckBox();
+            this.ngServeButton = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.label4 = new System.Windows.Forms.Label();
@@ -65,11 +70,6 @@ namespace AngularGUI
             this.createNewFlagTextBox = new System.Windows.Forms.TextBox();
             this.npmAuditFixButton = new System.Windows.Forms.Button();
             this.npmInstallButton = new System.Windows.Forms.Button();
-            this.ngServeButton = new System.Windows.Forms.Button();
-            this.browserOpen = new System.Windows.Forms.CheckBox();
-            this.portNumberInput = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -385,6 +385,69 @@ namespace AngularGUI
             this.panel4.Size = new System.Drawing.Size(425, 572);
             this.panel4.TabIndex = 9;
             // 
+            // label7
+            // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft JhengHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(22)))), ((int)(((byte)(88)))));
+            this.label7.Location = new System.Drawing.Point(318, 107);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(75, 14);
+            this.label7.TabIndex = 11;
+            this.label7.Text = "Default: 4200";
+            // 
+            // label5
+            // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft JhengHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(22)))), ((int)(((byte)(88)))));
+            this.label5.Location = new System.Drawing.Point(209, 87);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(78, 14);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Port Number:";
+            // 
+            // portNumberInput
+            // 
+            this.portNumberInput.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.portNumberInput.Enabled = false;
+            this.portNumberInput.Location = new System.Drawing.Point(212, 104);
+            this.portNumberInput.Name = "portNumberInput";
+            this.portNumberInput.Size = new System.Drawing.Size(100, 20);
+            this.portNumberInput.TabIndex = 10;
+            // 
+            // browserOpen
+            // 
+            this.browserOpen.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.browserOpen.AutoSize = true;
+            this.browserOpen.Checked = true;
+            this.browserOpen.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.browserOpen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.browserOpen.Font = new System.Drawing.Font("Microsoft JhengHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.browserOpen.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(22)))), ((int)(((byte)(88)))));
+            this.browserOpen.Location = new System.Drawing.Point(212, 48);
+            this.browserOpen.Name = "browserOpen";
+            this.browserOpen.Size = new System.Drawing.Size(97, 18);
+            this.browserOpen.TabIndex = 9;
+            this.browserOpen.Text = "Open Browser";
+            this.browserOpen.UseVisualStyleBackColor = true;
+            // 
+            // ngServeButton
+            // 
+            this.ngServeButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ngServeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ngServeButton.Font = new System.Drawing.Font("Microsoft JhengHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ngServeButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.ngServeButton.Location = new System.Drawing.Point(51, 48);
+            this.ngServeButton.Name = "ngServeButton";
+            this.ngServeButton.Size = new System.Drawing.Size(112, 76);
+            this.ngServeButton.TabIndex = 8;
+            this.ngServeButton.Text = "Serve Project";
+            this.ngServeButton.UseVisualStyleBackColor = true;
+            this.ngServeButton.Click += new System.EventHandler(this.ngServeButton_Click);
+            // 
             // panel7
             // 
             this.panel7.Controls.Add(this.progressBar);
@@ -494,68 +557,6 @@ namespace AngularGUI
             this.npmInstallButton.Text = "npm Install";
             this.npmInstallButton.UseVisualStyleBackColor = true;
             this.npmInstallButton.Click += new System.EventHandler(this.npminstallButton_Click);
-            // 
-            // ngServeButton
-            // 
-            this.ngServeButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ngServeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ngServeButton.Font = new System.Drawing.Font("Microsoft JhengHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ngServeButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ngServeButton.Location = new System.Drawing.Point(51, 48);
-            this.ngServeButton.Name = "ngServeButton";
-            this.ngServeButton.Size = new System.Drawing.Size(112, 76);
-            this.ngServeButton.TabIndex = 8;
-            this.ngServeButton.Text = "Serve Project";
-            this.ngServeButton.UseVisualStyleBackColor = true;
-            this.ngServeButton.Click += new System.EventHandler(this.ngServeButton_Click);
-            // 
-            // browserOpen
-            // 
-            this.browserOpen.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.browserOpen.AutoSize = true;
-            this.browserOpen.Checked = true;
-            this.browserOpen.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.browserOpen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.browserOpen.Font = new System.Drawing.Font("Microsoft JhengHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.browserOpen.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(22)))), ((int)(((byte)(88)))));
-            this.browserOpen.Location = new System.Drawing.Point(212, 48);
-            this.browserOpen.Name = "browserOpen";
-            this.browserOpen.Size = new System.Drawing.Size(97, 18);
-            this.browserOpen.TabIndex = 9;
-            this.browserOpen.Text = "Open Browser";
-            this.browserOpen.UseVisualStyleBackColor = true;
-            // 
-            // portNumberInput
-            // 
-            this.portNumberInput.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.portNumberInput.Location = new System.Drawing.Point(212, 104);
-            this.portNumberInput.Name = "portNumberInput";
-            this.portNumberInput.Size = new System.Drawing.Size(100, 20);
-            this.portNumberInput.TabIndex = 10;
-            // 
-            // label5
-            // 
-            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft JhengHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(22)))), ((int)(((byte)(88)))));
-            this.label5.Location = new System.Drawing.Point(209, 87);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(78, 14);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "Port Number:";
-            // 
-            // label7
-            // 
-            this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft JhengHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(22)))), ((int)(((byte)(88)))));
-            this.label7.Location = new System.Drawing.Point(318, 107);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(75, 14);
-            this.label7.TabIndex = 11;
-            this.label7.Text = "Default: 4200";
             // 
             // Form1
             // 
