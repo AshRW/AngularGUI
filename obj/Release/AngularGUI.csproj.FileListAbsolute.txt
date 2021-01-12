@@ -13,3 +13,7 @@ D:\War Station\Extra School\learn\c#\Angular GUI\AngularGUI\bin\Release\Eco.Inte
 D:\War Station\Extra School\learn\c#\Angular GUI\AngularGUI\bin\Release\Eco.LinqExtender.dll
 D:\War Station\Extra School\learn\c#\Angular GUI\AngularGUI\bin\Release\System.Buffers.dll
 D:\War Station\Extra School\learn\c#\Angular GUI\AngularGUI\obj\Release\AngularGUI.csproj.CopyComplete
+D:\War Station\Extra School\learn\c#\Angular GUI\AngularGUI\bin\Release\AngularGUI.exe.manifest
+D:\War Station\Extra School\learn\c#\Angular GUI\AngularGUI\bin\Release\AngularGUI.application
+D:\War Station\Extra School\learn\c#\Angular GUI\AngularGUI\obj\Release\AngularGUI.exe.manifest
+D:\War Station\Extra School\learn\c#\Angular GUI\AngularGUI\obj\Release\AngularGUI.application

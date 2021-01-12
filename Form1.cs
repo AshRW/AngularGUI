@@ -240,6 +240,8 @@ namespace AngularGUI
         //   STOP PROJECT ANYWAY   ///////////////////////////////////////
         private void stopProjectForce()
         {
+            ngServeButton.Enabled = false;
+            progressBar.Value = 0;
             var proc2 = new Process
             {
                 StartInfo = new ProcessStartInfo
@@ -269,6 +271,49 @@ namespace AngularGUI
                 }
             };
             stopAngular.Start();
+            status = false;
+            outPut.Text = stopAngular.StandardOutput.ReadLine();
+            ngServeButton.Text = "Serve Project";
+            ngServeButton.Enabled = true;
+        }
+
+        //   SERVE PROJECT   //////////////////////////////////////////////////////////////
+        public void ngServe()
+        {
+            string arg = "--o";
+            outPut.Text = null;
+            ngServeButton.Enabled = false;
+            if (!browserOpen.Checked)
+            {
+                arg = null;
+            }
+            var proc1 = new Process
+            {
+                StartInfo = new ProcessStartInfo
+                {
+                    FileName = "cmd.exe",
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true,
+                    Arguments = @"/c ng s " + arg + portArgOn,
+                    CreateNoWindow = true,
+                    WorkingDirectory = @path
+                }
+            };
+            proc1.Start();
+            isServing();
+            ngServeButton.Text = "Stop Project";
+            ngServeButton.Enabled = true;
+            if (browserOpen.Checked)
+            {
+                outPut.Text = "Opening Browser...";
+            }
+            else
+            {
+                outPut.Text = "Project started at localhost:" + portNumber;
+            }
+            wait(2000);
+            outPut.Text = null;
         }
         //   CREATE NEW COMPONENT, MODULE, SERVICE NAME CHECKER   ////////
         private bool isValid()
@@ -373,7 +418,6 @@ namespace AngularGUI
         //      NG SERVE AND NG SERVING STOP BUTTON   /////////////////////
         private void ngServeButton_Click(object sender, EventArgs e)
         {
-            string arg = "--o";
             if (path != null || status==true)
             {
                 errmessage.Text = null;
@@ -387,78 +431,12 @@ namespace AngularGUI
                     }
                     else
                     {
-                        outPut.Text = null;
-                        ngServeButton.Enabled = false;
-                        if (!browserOpen.Checked)
-                        {
-                            arg = null;
-                        }
-                        var proc1 = new Process
-                        {
-                            StartInfo = new ProcessStartInfo
-                            {
-                                FileName = "cmd.exe",
-                                UseShellExecute = false, 
-                                RedirectStandardOutput = true, 
-                                RedirectStandardError = true, 
-                                Arguments = @"/c ng s " + arg + portArgOn,
-                                CreateNoWindow = true,
-                                WorkingDirectory = @path
-                            }
-                        };
-                        proc1.Start();
-                        isServing();
-                        ngServeButton.Text = "Stop Project";
-                        ngServeButton.Enabled = true;
-                        if (browserOpen.Checked)
-                        {
-                            outPut.Text = "Opening Browser...";
-                        }
-                        else
-                        {
-                            outPut.Text = "Project started at localhost:" + portNumber;
-                        }
-                        wait(2000);
-                        outPut.Text = null;
+                        ngServe();
                     }
                 }
                 else
-                {
-                    progressBar.Value = 0;
-                    ngServeButton.Enabled = false;
-                    var proc2 = new Process
-                    {
-                        StartInfo = new ProcessStartInfo
-                        {
-                            FileName = "cmd.exe",
-                            UseShellExecute = false,
-                            RedirectStandardOutput = true,
-                            RedirectStandardError = true,
-                            Arguments = @"/c netstat -ano | findstr :" + portNumber,
-                            CreateNoWindow = true,
-                        }
-                    };
-                    proc2.Start();
-                    netStatOutput = proc2.StandardOutput.ReadLine();
-                    collection2 = Regex.Split(netStatOutput, @"\s+");
-                    processID = collection2[collection2.Length - 1];
-                    var stopAngular = new Process
-                    {
-                        StartInfo = new ProcessStartInfo
-                        {
-                            FileName = "cmd.exe",
-                            UseShellExecute = false,
-                            RedirectStandardOutput = true,
-                            RedirectStandardError = true,
-                            Arguments = @"/c taskkill /PID " + processID + " /F",
-                            CreateNoWindow = true,
-                        }
-                    };
-                    stopAngular.Start();
-                    status = false;
-                    outPut.Text = stopAngular.StandardOutput.ReadLine();
-                    ngServeButton.Text = "Serve Project";
-                    ngServeButton.Enabled = true;
+                {                                        
+                    stopProjectForce();                    
                     if (futurePortNumber!=-1)
                     {
                         portNumber = futurePortNumber;
@@ -466,7 +444,6 @@ namespace AngularGUI
                         portArgOn = @" --port " + portNumber;
                         futurePortNumber = -1;
                     }
-
                 }
             }
             else
@@ -553,6 +530,7 @@ namespace AngularGUI
         //   TO CHECK IF NG SERVE IS DONE YET and also manages progress bar   /////////////////////////////
         private void isServing()
         {
+            int waitDuration = 3000;
             string output = null;
             int flag = 1;
             progressBar.Value = 0;
@@ -560,7 +538,9 @@ namespace AngularGUI
             {
                 if (progressBar.Value != 90)
                     progressBar.Value += 10;
-                wait(3000);
+                if (progressBar.Value == 90)
+                    waitDuration = 4000;
+                wait(waitDuration);
                 var proc3 = new Process
                 {
                     StartInfo = new ProcessStartInfo
