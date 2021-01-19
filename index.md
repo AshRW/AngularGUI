@@ -4,6 +4,8 @@
 This **Windows Forms Application** is build using **C#** and **.NET Framework** in Visual Studio.\
 This Application is a Graphical User Interface for the Angular CLI.
 
+![Screen Shot of Angular GUI by ARW](https://anuragwankhede.tech/pics-and-images/ScreenShot%20of%20v1.0%20AGUI.png)
+
 ## Download Latest Released Version
 Download the latest released verion here:
 [Download Angular GUI](https://github.com/AshRW/AngularGUI/releases/download/1.0/AngularGUI.v1.exe)
