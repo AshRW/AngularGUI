@@ -10,6 +10,13 @@ This Application is a Graphical User Interface for the Angular CLI.
 Download the latest released verion here:
 [Download Angular GUI](https://github.com/AshRW/AngularGUI/releases/download/1.0/AngularGUI.v1.exe)
 
+## What others say about my application
+- "Angular GUI reduces efforts required to manage the node components or modules"\
+   ~ Roshada A (a DevOps Engineer)
+  
+- "Great concept...Easy to use...Minimalist design"\
+   ~ Amijeet T (an Indian Institute of Technology-Kharagpur Student)
+
 ## The Latest Release
 This release, the version 1 of the angular GUI Serves and stops project, lets you choose the port number for serving your project, and also lets you toggle the option between opening a browser when the project serves. The color scheme has also been improved and various bugs have also been fixed.
 
